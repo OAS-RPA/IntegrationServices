@@ -1,0 +1,272 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Box" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ubia="clr-namespace:UiPath.Box.IntegrationService.Activities;assembly=UiPath.Box.IntegrationService.Activities" xmlns:ubic="clr-namespace:UiPath.Box.IntegrationService.Client;assembly=UiPath.Box.IntegrationService" xmlns:ubme="clr-namespace:UiPath.BAF.Models.Entity;assembly=UiPath.Box.IntegrationService" xmlns:ubmr="clr-namespace:UiPath.BAF.Models.Response;assembly=UiPath.Box.IntegrationService" xmlns:ubt="clr-namespace:UiPath.BAF.Telemetry;assembly=UiPath.Box.IntegrationService" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uim="clr-namespace:UiPath.IntegrationCore.Models;assembly=UiPath.Box.IntegrationService" xmlns:uis="clr-namespace:UiPath.IntegrationCore.Services;assembly=UiPath.Box.IntegrationService" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="UiPathEvent" Type="InArgument(x:String)" />
+    <x:Property Name="UiPathEventObjectID" Type="InArgument(x:String)" />
+    <x:Property Name="UiPathEventConnector" Type="InArgument(x:String)" />
+    <x:Property Name="UiPathEventObjectType" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1056,1225</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Box_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="37">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Box.IntegrationService.Activities</x:String>
+      <x:String>UiPath.BAF.Activities.ContextModel</x:String>
+      <x:String>UiPath.IntegrationCore.Models</x:String>
+      <x:String>UiPath.BAF.Models.Connection.APIConnection</x:String>
+      <x:String>UiPath.BAF.Models.Connection</x:String>
+      <x:String>UiPath.BAF.Telemetry</x:String>
+      <x:String>UiPath.BAF.Models</x:String>
+      <x:String>UiPath.BAF.ServiceInterfaces</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.IntegrationCore.Activities</x:String>
+      <x:String>UiPath.BAF.Activities</x:String>
+      <x:String>UiPath.BAF.Models.Entity</x:String>
+      <x:String>UiPath.BAF.Models.CrudOperation</x:String>
+      <x:String>UiPath.BAF.Models.Response</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.Box.IntegrationService.Client</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Box.IntegrationService.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Box.IntegrationService</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Box" sap:VirtualizedContainerService.HintSize="476,1160" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ubic:Folder_items[]" Name="FolderItem" />
+      <Variable x:TypeArguments="ubic:Folders" Name="FolderInfo" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ubia:Scope Connection="{x:Null}" ConnectionId="{x:Null}" ExistingConnection="{x:Null}" Connector="uipath-box-box" DesignConnectionEnabled="False" DisplayName="Box Scope" sap:VirtualizedContainerService.HintSize="434,650" sap2010:WorkflowViewState.IdRef="Scope_1" TelemetryEnabled="False" ThrowExceptionOnError="True" UseConnectionService="True">
+      <ubia:Scope.Body>
+        <ActivityAction x:TypeArguments="ubia:BoxScopeActivityContext">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ubia:BoxScopeActivityContext" Name="ScopeActivityContext" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,539" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="ubmr:ResponseStatus" Name="Records" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ubia:GetFolderItems BusinessEntityName="{x:Null}" Status="{x:Null}" ConfiguredBusinessEntity="folder_items" CrudOperation="Search" DesignConnectionEnabled="True" DisplayName="Get Folder Items" sap:VirtualizedContainerService.HintSize="334,237" sap2010:WorkflowViewState.IdRef="GetFolderItems_1">
+              <ubia:GetFolderItems.BusinessEntity>
+                <ubme:BusinessEntity AuthFields="{x:Null}" Connection="{x:Null}" Id="{x:Null}" Name="folder_items">
+                  <ubme:BusinessEntity.AllFields>
+                    <scg:List x:TypeArguments="ubme:EntityField" Capacity="8">
+                      <uim:OperationEntityField x:TypeArguments="x:String" ContainingType="{x:Null}" DefaultValue="{x:Null}" FieldFullName="{x:Null}" InOutArgumentValue="{x:Null}" Metadata="{x:Null}" OriginalArgumentType="{x:Null}" OutArgumentValue="{x:Null}" SampleValue="{x:Null}" Value="{x:Null}" x:Name="__ReferenceID1" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="The ID of the folder." DisplayName="Folder ID" FieldName="folder_id" FormDataType="ExpressionTextBox" InArgumentValue="[UiPathEventObjectID]" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="True" IsIdField="False" IsSelected="False" Location="Undefined" Mandatory="True" ShouldFilterOnChange="False">
+                        <uim:OperationEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">[UiPathEventObjectID]</InArgument>
+                        </uim:OperationEntityField.ArgumentValue>
+                      </uim:OperationEntityField>
+                      <uim:OperationEntityField x:TypeArguments="x:String" ArgumentValue="{x:Null}" ContainingType="{x:Null}" DefaultValue="{x:Null}" FieldFullName="{x:Null}" InArgumentValue="{x:Null}" InOutArgumentValue="{x:Null}" Metadata="{x:Null}" OriginalArgumentType="{x:Null}" OutArgumentValue="{x:Null}" SampleValue="{x:Null}" Value="{x:Null}" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="The fields to return on the response. Can be a single field or a comma-separated list of fields" DisplayName="Fields" FieldName="fields" FormDataType="ExpressionTextBox" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="True" IsIdField="False" IsSelected="False" Location="Undefined" Mandatory="False" ShouldFilterOnChange="False" />
+                      <uim:OperationEntityField x:TypeArguments="x:Int32" ContainingType="{x:Null}" DefaultValue="{x:Null}" FieldFullName="{x:Null}" InOutArgumentValue="{x:Null}" Metadata="{x:Null}" OriginalArgumentType="{x:Null}" OutArgumentValue="{x:Null}" SampleValue="{x:Null}" Value="{x:Null}" x:Name="__ReferenceID2" ArgumentDirection="In" ArgumentType="x:Int32" DataType="Int32" Description="The maximum number of items to return." DisplayName="Maximum Items" FieldName="maximumRecordsReturned" FormDataType="ExpressionTextBox" InArgumentValue="0" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="False" IsIdField="False" IsSelected="False" Location="Undefined" Mandatory="True" ShouldFilterOnChange="False">
+                        <uim:OperationEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                        </uim:OperationEntityField.ArgumentValue>
+                      </uim:OperationEntityField>
+                      <uim:OperationEntityField x:TypeArguments="x:String" ArgumentValue="{x:Null}" ContainingType="{x:Null}" DefaultValue="{x:Null}" FieldFullName="{x:Null}" InArgumentValue="{x:Null}" InOutArgumentValue="{x:Null}" Metadata="{x:Null}" OriginalArgumentType="{x:Null}" OutArgumentValue="{x:Null}" SampleValue="{x:Null}" Value="{x:Null}" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="The page token taken from the next page token of the previous page." DisplayName="Page Token" FieldName="nextPage" FormDataType="ExpressionTextBox" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="True" IsIdField="False" IsSelected="False" Location="Undefined" Mandatory="False" ShouldFilterOnChange="False" />
+                      <uim:OperationEntityField x:TypeArguments="x:Int32" ArgumentValue="{x:Null}" ContainingType="{x:Null}" DefaultValue="{x:Null}" FieldFullName="{x:Null}" InArgumentValue="{x:Null}" InOutArgumentValue="{x:Null}" Metadata="{x:Null}" OriginalArgumentType="{x:Null}" OutArgumentValue="{x:Null}" SampleValue="{x:Null}" Value="{x:Null}" ArgumentDirection="In" ArgumentType="x:Int32" DataType="Int32" Description="The number of resources to return in a given page" DisplayName="PageSize" FieldName="pageSize" FormDataType="ExpressionTextBox" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="True" IsIdField="False" IsSelected="False" Location="Undefined" Mandatory="False" ShouldFilterOnChange="False" />
+                      <uim:OperationEntityField x:TypeArguments="x:String" ArgumentValue="{x:Null}" ContainingType="{x:Null}" DefaultValue="{x:Null}" FieldFullName="{x:Null}" InArgumentValue="{x:Null}" InOutArgumentValue="{x:Null}" Metadata="{x:Null}" OriginalArgumentType="{x:Null}" OutArgumentValue="{x:Null}" SampleValue="{x:Null}" Value="{x:Null}" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="The CEQL search expression, or the where clause, without the WHERE keyword, in a typical SQL query" DisplayName="Where" FieldName="where" FormDataType="ExpressionTextBox" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="True" IsIdField="False" IsSelected="False" Location="Undefined" Mandatory="False" ShouldFilterOnChange="False" />
+                      <uim:OperationEntityField x:TypeArguments="ubic:Folder_items[]" ContainingType="{x:Null}" DefaultValue="{x:Null}" FieldFullName="{x:Null}" InArgumentValue="{x:Null}" InOutArgumentValue="{x:Null}" Metadata="{x:Null}" OriginalArgumentType="{x:Null}" SampleValue="{x:Null}" Value="{x:Null}" x:Name="__ReferenceID3" ArgumentDirection="Out" ArgumentType="ubic:Folder_items[]" DataType="Folder_items[]" Description="An array of Folder Items" DisplayName="Folder Items" FieldName="Response" FormDataType="ExpressionTextBox" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="True" IsIdField="False" IsSelected="False" Location="Undefined" Mandatory="False" OutArgumentValue="[FolderItem]" ShouldFilterOnChange="False">
+                        <uim:OperationEntityField.ArgumentValue>
+                          <OutArgument x:TypeArguments="ubic:Folder_items[]">[FolderItem]</OutArgument>
+                        </uim:OperationEntityField.ArgumentValue>
+                      </uim:OperationEntityField>
+                      <uim:OperationEntityField x:TypeArguments="x:String" ArgumentValue="{x:Null}" ContainingType="{x:Null}" DefaultValue="{x:Null}" FieldFullName="{x:Null}" InArgumentValue="{x:Null}" InOutArgumentValue="{x:Null}" Metadata="{x:Null}" OriginalArgumentType="{x:Null}" OutArgumentValue="{x:Null}" SampleValue="{x:Null}" Value="{x:Null}" ArgumentDirection="Out" ArgumentType="x:String" DataType="String" Description="The token for the next page of records. Use this token to iterate through the pages until a empty list is returned." DisplayName="Next Page Token" FieldName="nextPageTokenFromHeader" FormDataType="ExpressionTextBox" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="False" IsIdField="False" IsSelected="False" Location="Header" Mandatory="False" ShouldFilterOnChange="False" />
+                    </scg:List>
+                  </ubme:BusinessEntity.AllFields>
+                  <ubme:BusinessEntity.EntityMetadata>
+                    <ubme:EntityMetadata Description="{x:Null}" Metadata="{x:Reference __ReferenceID0}" DisplayName="List items in folder" EligibleOperations="64" IsCustomEntity="False" Name="folder_items" />
+                  </ubme:BusinessEntity.EntityMetadata>
+                  <ubme:BusinessEntity.Metadata>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object" x:Name="__ReferenceID0">
+                      <x:String x:Key="Object">Folder_items</x:String>
+                      <x:String x:Key="Client">UiPath.Box.IntegrationService.Client.Folder_itemsAPIClient</x:String>
+                      <x:String x:Key="Operation">GetFoldersItems</x:String>
+                      <x:String x:Key="Path">/folders/{folder_id}/items</x:String>
+                    </scg:Dictionary>
+                  </ubme:BusinessEntity.Metadata>
+                  <ubme:BusinessEntity.SelectedFields>
+                    <scg:List x:TypeArguments="ubme:EntityField" Capacity="4">
+                      <x:Reference>__ReferenceID1</x:Reference>
+                      <x:Reference>__ReferenceID2</x:Reference>
+                      <x:Reference>__ReferenceID3</x:Reference>
+                    </scg:List>
+                  </ubme:BusinessEntity.SelectedFields>
+                  <ubme:BusinessEntity.TelemetryProperties>
+                    <scg:Dictionary x:TypeArguments="ubt:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
+                  </ubme:BusinessEntity.TelemetryProperties>
+                </ubme:BusinessEntity>
+              </ubia:GetFolderItems.BusinessEntity>
+              <ubia:GetFolderItems.SelectedFields>
+                <scg:List x:TypeArguments="ubme:EntityField" Capacity="3">
+                  <x:Reference>__ReferenceID1</x:Reference>
+                  <x:Reference>__ReferenceID2</x:Reference>
+                  <x:Reference>__ReferenceID3</x:Reference>
+                </scg:List>
+              </ubia:GetFolderItems.SelectedFields>
+              <ubia:GetFolderItems.TelemetryProperties>
+                <scg:Dictionary x:TypeArguments="ubt:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
+              </ubia:GetFolderItems.TelemetryProperties>
+            </ubia:GetFolderItems>
+            <ubia:GetFolderInfo BusinessEntityName="{x:Null}" Status="{x:Null}" ConfiguredBusinessEntity="Folders" CrudOperation="Get" DesignConnectionEnabled="True" DisplayName="Get Folder Info" sap:VirtualizedContainerService.HintSize="334,170" sap2010:WorkflowViewState.IdRef="GetFolderInfo_1">
+              <ubia:GetFolderInfo.BusinessEntity>
+                <ubme:BusinessEntity AuthFields="{x:Null}" Connection="{x:Null}" Id="{x:Null}" Name="folders">
+                  <ubme:BusinessEntity.AllFields>
+                    <scg:List x:TypeArguments="ubme:EntityField" Capacity="4">
+                      <uim:OperationEntityField x:TypeArguments="x:String" ContainingType="{x:Null}" DefaultValue="{x:Null}" FieldFullName="{x:Null}" InOutArgumentValue="{x:Null}" Metadata="{x:Null}" OriginalArgumentType="{x:Null}" OutArgumentValue="{x:Null}" SampleValue="{x:Null}" Value="{x:Null}" x:Name="__ReferenceID5" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="The ID of the folder." DisplayName="Folder ID" FieldName="foldersId" FormDataType="ExpressionTextBox" InArgumentValue="[UiPathEventObjectID]" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="True" IsIdField="True" IsSelected="False" Location="Undefined" Mandatory="True" ShouldFilterOnChange="False">
+                        <uim:OperationEntityField.ArgumentValue>
+                          <InArgument x:TypeArguments="x:String">[UiPathEventObjectID]</InArgument>
+                        </uim:OperationEntityField.ArgumentValue>
+                      </uim:OperationEntityField>
+                      <uim:OperationEntityField x:TypeArguments="x:String" ArgumentValue="{x:Null}" ContainingType="{x:Null}" DefaultValue="{x:Null}" FieldFullName="{x:Null}" InArgumentValue="{x:Null}" InOutArgumentValue="{x:Null}" Metadata="{x:Null}" OriginalArgumentType="{x:Null}" OutArgumentValue="{x:Null}" SampleValue="{x:Null}" Value="{x:Null}" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="The URL, and optional password, for the shared link of this item.This header can be used to access items that have not been explicitly shared with a user. Ex: shared_link=[link]&amp;shared_link_password=[password]. ***Value passed under the header elements-vendor-headers will be mapped to “boxapi” header in this case." DisplayName="Elements_vendor_headers" FieldName="elements_vendor_headers" FormDataType="ExpressionTextBox" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="True" IsIdField="False" IsSelected="False" Location="Undefined" Mandatory="False" ShouldFilterOnChange="False" />
+                      <uim:OperationEntityField x:TypeArguments="x:String" ArgumentValue="{x:Null}" ContainingType="{x:Null}" DefaultValue="{x:Null}" FieldFullName="{x:Null}" InArgumentValue="{x:Null}" InOutArgumentValue="{x:Null}" Metadata="{x:Null}" OriginalArgumentType="{x:Null}" OutArgumentValue="{x:Null}" SampleValue="{x:Null}" Value="{x:Null}" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="Ensures an item is only returned if it has changed. Ex: 1" DisplayName="If_none_match" FieldName="if_none_match" FormDataType="ExpressionTextBox" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="True" IsIdField="False" IsSelected="False" Location="Undefined" Mandatory="False" ShouldFilterOnChange="False" />
+                      <uim:OperationEntityField x:TypeArguments="ubic:Folders" ContainingType="{x:Null}" DefaultValue="{x:Null}" FieldFullName="{x:Null}" InArgumentValue="{x:Null}" InOutArgumentValue="{x:Null}" Metadata="{x:Null}" OriginalArgumentType="{x:Null}" SampleValue="{x:Null}" Value="{x:Null}" x:Name="__ReferenceID6" ArgumentDirection="Out" ArgumentType="ubic:Folders" DataType="Folders" Description="The Folder Info object." DisplayName="Folder Info" FieldName="Response" FormDataType="ExpressionTextBox" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="True" IsIdField="False" IsSelected="False" Location="Undefined" Mandatory="False" OutArgumentValue="[FolderInfo]" ShouldFilterOnChange="False">
+                        <uim:OperationEntityField.ArgumentValue>
+                          <OutArgument x:TypeArguments="ubic:Folders">[FolderInfo]</OutArgument>
+                        </uim:OperationEntityField.ArgumentValue>
+                      </uim:OperationEntityField>
+                    </scg:List>
+                  </ubme:BusinessEntity.AllFields>
+                  <ubme:BusinessEntity.EntityMetadata>
+                    <ubme:EntityMetadata Description="{x:Null}" Metadata="{x:Reference __ReferenceID4}" DisplayName="folders" EligibleOperations="2" IsCustomEntity="False" Name="folders" />
+                  </ubme:BusinessEntity.EntityMetadata>
+                  <ubme:BusinessEntity.Metadata>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object" x:Name="__ReferenceID4">
+                      <x:String x:Key="Object">Folders</x:String>
+                      <x:String x:Key="Client">UiPath.Box.IntegrationService.Client.FoldersAPIClient</x:String>
+                      <x:String x:Key="Operation">GetFolderByFoldersId</x:String>
+                      <x:String x:Key="Path">/folders</x:String>
+                    </scg:Dictionary>
+                  </ubme:BusinessEntity.Metadata>
+                  <ubme:BusinessEntity.SelectedFields>
+                    <scg:List x:TypeArguments="ubme:EntityField" Capacity="4">
+                      <x:Reference>__ReferenceID5</x:Reference>
+                      <x:Reference>__ReferenceID6</x:Reference>
+                    </scg:List>
+                  </ubme:BusinessEntity.SelectedFields>
+                  <ubme:BusinessEntity.TelemetryProperties>
+                    <scg:Dictionary x:TypeArguments="ubt:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
+                  </ubme:BusinessEntity.TelemetryProperties>
+                </ubme:BusinessEntity>
+              </ubia:GetFolderInfo.BusinessEntity>
+              <ubia:GetFolderInfo.SelectedFields>
+                <scg:List x:TypeArguments="ubme:EntityField" Capacity="2">
+                  <x:Reference>__ReferenceID5</x:Reference>
+                  <x:Reference>__ReferenceID6</x:Reference>
+                </scg:List>
+              </ubia:GetFolderInfo.SelectedFields>
+              <ubia:GetFolderInfo.TelemetryProperties>
+                <scg:Dictionary x:TypeArguments="ubt:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
+              </ubia:GetFolderInfo.TelemetryProperties>
+            </ubia:GetFolderInfo>
+          </Sequence>
+        </ActivityAction>
+      </ubia:Scope.Body>
+      <ubia:Scope.ClientInfo>
+        <uim:ClientInfo x:Name="__ReferenceID7" ClientAssembly="UiPath.Box.IntegrationService" ClientNamespace="UiPath.Box.IntegrationService" />
+      </ubia:Scope.ClientInfo>
+      <ubia:Scope.DesignConnectionRequest>
+        <uim:ConnectionParams ClientInfo="{x:Reference __ReferenceID7}" TelemetryClient="{x:Null}" AuthType="ElementInstance" ConnectionId="480cd4cf-9f82-ec11-94f6-dc984004a28b" ConnectionName="olivier.assaillit@novelconseil.com" />
+      </ubia:Scope.DesignConnectionRequest>
+      <ubia:Scope.ServiceFactory>
+        <uis:ServiceFactory BusinessEntityService="{x:Null}" QueryService="{x:Null}">
+          <uis:ServiceFactory.BusinessEntityExecuteService>
+            <uis:BusinessEntityExecuteService />
+          </uis:ServiceFactory.BusinessEntityExecuteService>
+          <uis:ServiceFactory.ConnectionService>
+            <uis:ConnectionService />
+          </uis:ServiceFactory.ConnectionService>
+          <uis:ServiceFactory.FileService>
+            <uis:FileExecutionService />
+          </uis:ServiceFactory.FileService>
+          <uis:ServiceFactory.ListService>
+            <uis:ListService />
+          </uis:ServiceFactory.ListService>
+          <uis:ServiceFactory.MetadataService>
+            <uis:MetadataService />
+          </uis:ServiceFactory.MetadataService>
+          <uis:ServiceFactory.SampleDataService>
+            <uis:SampleDataService />
+          </uis:ServiceFactory.SampleDataService>
+        </uis:ServiceFactory>
+      </ubia:Scope.ServiceFactory>
+      <ubia:Scope.TelemetryProperties>
+        <scg:Dictionary x:TypeArguments="ubt:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
+      </ubia:Scope.TelemetryProperties>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ubia:Scope>
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[FolderInfo.ToString]" />
+    <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="434,277" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[FolderItem]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="272,153" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[item.ToString]" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+  </Sequence>
+</Activity>
